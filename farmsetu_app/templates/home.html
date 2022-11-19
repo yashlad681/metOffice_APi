@@ -1,0 +1,48 @@
+
+
+{% comment %} {% block content %} {% endcomment %}
+
+{% comment %} how to loop on the 0,1,2,3
+how to use capabilities endpoint
+{% endcomment %}
+{% comment %} {{weather}} {% endcomment %}
+{% comment %} {{weather}} {% endcomment %}
+
+<table>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+    <tr>
+        <th>Temperature</th>
+        <th>Wind Speed</th>
+        {% comment %} <th>weather_type</th> {% endcomment %}
+        <th>Region Name</th>
+    </tr>
+    {% for data in weather %}
+    <tr>
+        <td>{{data.temperature}} Cel</td>
+        <td>{{data.wind_speed}} mph </td>
+        {% comment %} <td>{{data.weather_type}} </td> {% endcomment %}
+        <td>{{data.name}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+
+{% comment %} {% endblock content %} {% endcomment %}
