@@ -27,19 +27,21 @@ how to use capabilities endpoint
         }
         </style>
     <tr>
-        <th>Temperature</th>
-        <th>Wind Speed</th>
-        {% comment %} <th>weather_type</th> {% endcomment %}
-        <th>Region Name</th>
+      {% for data in context.header %}
+          <th> {{data}}</th>       
+      {% endfor %}        
     </tr>
-    {% for data in weather %}
+   
+ 
+    {% for temp in context.weather_data %}
     <tr>
-        <td>{{data.temperature}} Cel</td>
-        <td>{{data.wind_speed}} mph </td>
-        {% comment %} <td>{{data.weather_type}} </td> {% endcomment %}
-        <td>{{data.name}}</td>
-    </tr>
-    {% endfor %}
+       {% for value  in temp %}
+        <td> {{value}}</td> 
+        {% endfor %}   
+      </tr>   
+    {% endfor %}        
+     
+  
 
 </table>
 
