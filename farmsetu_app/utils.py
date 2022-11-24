@@ -1,11 +1,14 @@
 from farmsetu_app.models import WeatherData
 
 def get_weather_data():
+    heading=['year', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'winter', 'spring', 'summer', 'autumn', 'annual']    
     data=WeatherData.objects.all()
     data=list(data)
     weather_data=[]
+
     for row in data:
-        value=[row.year, row.jan,
+        row_data={}
+        values=[row.year, row.jan,
             row.feb, row.mar,
             row.apr, row.may,
             row.jun, row.jul,
@@ -15,14 +18,16 @@ def get_weather_data():
             row.spring, row.summer,
             row.autumn, row.annual
         ]
-        weather_data.append(value)
-    heading=['year', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'winter', 'spring', 'summer', 'autumn', 'annual']
-    return heading,weather_data
+        for i in range(18):
+            key=heading[i]
+            value=values[i]
+            row_data[key]=value
+        weather_data.append(row_data)
+    return weather_data
   
         
 
-def insertion_script():
-    
+def insertion_script():   
     file=open("UK.txt")
     read=file.readlines()[5:]
     for i in range(len(read)):
